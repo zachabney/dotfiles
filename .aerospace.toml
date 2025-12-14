@@ -8,7 +8,7 @@ config-version = 2
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 hidpi=on style=round'
+    # 'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 hidpi=on style=round'
 ]
 
 # Start AeroSpace at login
@@ -47,7 +47,7 @@ automatically-unhide-macos-hidden-apps = false
 # even when they are invisible.
 # This config version is only available since 'config-version = 2'
 # Fallback value (if you omit the key): persistent-workspaces = []
-persistent-workspaces = []
+persistent-workspaces = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
 #[workspace-to-monitor-force-assignment]
 #    1 = 1
@@ -59,65 +59,26 @@ persistent-workspaces = []
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 on-mode-changed = []
 
-#[[on-window-detected]]
-#if.app-id = 'com.hnc.Discord'
-#run = ['move-node-to-workspace P']
-#
-#[[on-window-detected]]
-#if.app-id = 'com.googlecode.iterm2'
-#run = ['move-node-to-workspace T']
-#
-#[[on-window-detected]]
-#if.app-id = 'com.jetbrains.goland'
-#run = ['move-node-to-workspace C']
-#
-#[[on-window-detected]]
-#if.app-id = 'com.jetbrains.rider'
-#run = ['move-node-to-workspace C']
-#
-#[[on-window-detected]]
-#if.app-id = 'com.jetbrains.rustrover'
-#run = ['move-node-to-workspace C']
-#
-#[[on-window-detected]]
-#if.app-id = 'com.microsoft.VSCode'
-#run = ['move-node-to-workspace C']
-#
-#[[on-window-detected]]
-#if.app-id = 'md.obsidian'
-#run = ['move-node-to-workspace N']
-#
-#[[on-window-detected]]
-#if.app-id = 'com.spotify.client'
-#run = ['move-node-to-workspace S']
-#
-#[[on-window-detected]]
-#if.app-id = 'com.tinyapp.TablePlus'
-#run = ['move-node-to-workspace D']
-#
-#[[on-window-detected]]
-#if.app-id = 'com.apple.MobileSMS'
-#run = ['move-node-to-workspace P']
-#
-#[[on-window-detected]]
-#if.app-id = 'com.microsoft.Outlook'
-#run = ['move-node-to-workspace E']
-#
-#[[on-window-detected]]
-#if.app-id = 'com.apple.finder'
-#run = ['move-node-to-workspace F']
-#
-#[[on-window-detected]]
-#if.app-id = 'com.tinyspeck.slackmacgap'
-#run = ['layout accordion horizontal vertical', 'move-node-to-workspace M']
-#
-#[[on-window-detected]]
-#if.app-id = 'com.microsoft.teams2'
-#run = ['layout accordion horizontal vertical', 'move-node-to-workspace M']
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = ['move-node-to-workspace D']
 
-#[[on-window-detected]]
-#    if.app-id = 'com.figma.Desktop'
-#    run = ['move-node-to-workspace F']
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = ['move-node-to-workspace M']
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.Outlook'
+run = ['move-node-to-workspace O']
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = ['move-node-to-workspace S']
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = ['move-node-to-workspace T']
+
 
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
@@ -133,12 +94,12 @@ on-mode-changed = []
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-    inner.horizontal = 10
-    inner.vertical =   10
-    outer.left =       5
-    outer.bottom =     5
-    outer.top =        5
-    outer.right =      5
+    inner.horizontal = 0 #10
+    inner.vertical =   0 #10
+    outer.left =       0 #5
+    outer.bottom =     0 #5
+    outer.top =        0 #5
+    outer.right =      0 #5
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -165,12 +126,8 @@ on-mode-changed = []
     # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
     # You can uncomment the following lines to open up terminal with alt + enter shortcut
     # (like in i3)
-    # alt-enter = '''exec-and-forget osascript -e '
-    # tell application "Terminal"
-    #     do script
-    #     activate
-    # end tell'
-    # '''
+    alt-space = ['mode launch']
+    alt-enter = ['fullscreen']
 
     cmd-h = [] # Disable "hide application"
     cmd-alt-h = [] # Disable "hide others"
@@ -267,18 +224,57 @@ on-mode-changed = []
     alt-tab = 'workspace-back-and-forth'
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
     alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+    alt-cmd-0 = 'summon-workspace 0'
+    alt-cmd-1 = 'summon-workspace 1'
+    alt-cmd-2 = 'summon-workspace 2'
+    alt-cmd-3 = 'summon-workspace 3'
+    alt-cmd-4 = 'summon-workspace 4'
+    alt-cmd-5 = 'summon-workspace 5'
+    alt-cmd-6 = 'summon-workspace 6'
+    alt-cmd-7 = 'summon-workspace 7'
+    alt-cmd-8 = 'summon-workspace 8'
+    alt-cmd-9 = 'summon-workspace 9'
+    alt-cmd-a = 'summon-workspace A'
+    alt-cmd-b = 'summon-workspace B'
+    alt-cmd-c = 'summon-workspace C'
+    alt-cmd-d = 'summon-workspace D'
+    alt-cmd-e = 'summon-workspace E'
+    alt-cmd-f = 'summon-workspace F'
+    alt-cmd-g = 'summon-workspace G'
+    alt-cmd-i = 'summon-workspace I'
+    alt-cmd-m = 'summon-workspace M'
+    alt-cmd-n = 'summon-workspace N'
+    alt-cmd-o = 'summon-workspace O'
+    alt-cmd-p = 'summon-workspace P'
+    alt-cmd-q = 'summon-workspace Q'
+    alt-cmd-r = 'summon-workspace R'
+    alt-cmd-s = 'summon-workspace S'
+    alt-cmd-t = 'summon-workspace T'
+    alt-cmd-u = 'summon-workspace U'
+    alt-cmd-v = 'summon-workspace V'
+    alt-cmd-w = 'summon-workspace W'
+    alt-cmd-x = 'summon-workspace X'
+    alt-cmd-y = 'summon-workspace Y'
+    alt-cmd-z = 'summon-workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
 
-[mode.resize.binding]
-    h = 'resize width -50'
-    j = 'resize height +50'
-    k = 'resize height -50'
-    l = 'resize width +50'
-    enter = 'mode main'
-    esc = 'mode main'
-    # See: https://nikitabobko.github.io/AeroSpace/commands#mode
+[mode.launch.binding]
+    esc = ['mode main']
+    enter = ['exec-and-forget open -n -a iTerm.app', 'mode main']
+    f = ['exec-and-forget open $HOME', 'mode main']
+    b = ['mode firefox']
+    a = ['trigger-binding --mode firefox a']
+    n = ['trigger-binding --mode firefox n']
+    p = ['trigger-binding --mode firefox p']
+    c = ['exec-and-forget open -g -a Slack.app && open -g -a "Microsoft Teams.app" && open -g -a "Microsoft Outlook.app" && open -g -a Messages.app && open -g -a Discord.app', 'mode main']
+
+[mode.firefox.binding]
+    esc = ['mode main']
+    a = ['exec-and-forget open -n -a Firefox.app --args -no-remote -profile "/Users/zach/Library/Application Support/Firefox/Profiles/Vhe6t9qb.Profile 1"', 'mode main']
+    n = ['exec-and-forget open -n -a Firefox.app --args -no-remote -profile "/Users/zach/Library/Application Support/Firefox/Profiles/DAJ8dFUT.Profile 3"', 'mode main']
+    p = ['exec-and-forget open -n -a Firefox.app --args -no-remote -profile "/Users/zach/Library/Application Support/Firefox/Profiles/ZP8PHv3Y.Profile 2"', 'mode main']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
