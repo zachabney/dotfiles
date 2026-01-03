@@ -1,0 +1,7 @@
+-- Git integration showing edit bar and blame
+return {
+    'lewis6991/gitsigns.nvim',
+    opts = {
+        current_line_blame = true,
+    }
+}
