@@ -16,6 +16,11 @@ return {
         "git_status",
         "document_symbols",
       },
+      filesystem = {
+          filtered_items = {
+              visible = true,
+          }
+      }
     }
   }
 }
