@@ -21,3 +21,6 @@ alias c="clear"
 alias g="git"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias l='ls -alh'
+
+if [ "$TMUX" = "" ]; then tmux; fi
