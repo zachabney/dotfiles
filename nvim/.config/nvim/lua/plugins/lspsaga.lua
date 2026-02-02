@@ -26,6 +26,9 @@ return {
 			lightbulb = {
 				virtual_text = false, -- hide light bulb at end of line
 			},
+            ui = {
+                code_action = ''
+            }
         })
     end,
     dependencies = {
