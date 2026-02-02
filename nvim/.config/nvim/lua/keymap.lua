@@ -127,3 +127,10 @@ vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<CR>"
 vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<CR>", { desc = "Toggle Trouble document diagnostics" })
 vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<CR>", { desc = "Toggle Trouble quickfix" })
 vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<CR>", { desc = "Toggle Trouble loclist" })
+
+-- Diffview
+vim.keymap.set("n", "<leader>v", "<cmd>DiffviewOpen<CR>", { desc = "Open Diffview" })
+
+-- Neogit
+local neogit = require('neogit')
+vim.keymap.set("n", "<leader>gg", function() neogit.open() end, { desc = "Open Neogit UI" })
