@@ -23,4 +23,13 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias l='ls -alh'
 
+export PATH="$PATH:/home/zach/.dotnet/tools:/home/zach/.cargo/bin"
+
+# fnm
+FNM_PATH="/home/zach/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
+
 if [ "$TMUX" = "" ]; then tmux; fi
