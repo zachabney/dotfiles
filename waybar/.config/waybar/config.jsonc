@@ -1,40 +1,139 @@
 {
+  "layer": "top",
   "position": "top",
-  "modules-left": ["hyprland/workspaces"],
+  "spacing": 0,
+  "modules-left": [
+    "custom/power",
+    "hyprland/workspaces",
+    "tray",
+    "privacy"
+  ],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["systemd-failed-units", "network", "pulseaudio", "battery", "clock"],
-  "clock": {
-    "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %I:%M%p}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  "modules-right": [
+    "systemd-failed-units",
+    "temperature",
+    "cpu",
+    "memory",
+    "network",
+    "wireplumber#sink",
+    "wireplumber#source",
+    "battery",
+    "clock"
+  ],
+  "hyprland/workspaces": {
+    "on-click": "activate"
+  },
+  "network": {
+    "format-wifi": "<span font='MesloLGSNerdFontPropo'>\uf1eb</span> {essid}",
+    "format-ethernet": "<span font='MesloLGSNerdFontPropo'>\uef44</span>",
+    "tooltip-format": "<span font='MesloLGSNerdFontPropo'>󰅧</span> {bandwidthUpBytes}  <span font='MesloLGSNerdFontPropo'>󰅢</span> {bandwidthDownBytes}",
+    "tooltip-format-wifi": "<span font='MesloLGSNerdFontPropo'>\uf1eb</span> {signalStrength}%\n<span font='MesloLGSNerdFontPropo'>󰅧</span> {bandwidthUpBytes}  <span font='MesloLGSNerdFontPropo'>󰅢</span> {bandwidthDownBytes}",
+    "format-linked": "<span font='MesloLGSNerdFontPropo'>󱘖</span> {ifname} (No IP)",
+    "format-disconnected": "<span font='MesloLGSNerdFontPropo'></span> Disconnected",
+    "interval": 1,
+    "on-click": "nm-connection-editor",
+    "on-click-right": "nm-applet --indicator"
   },
   "battery": {
     "states": {
       "warning": 30,
       "critical": 15
     },
-    "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
-    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
-    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
-    "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
-    "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-icons": ["", "", "", "", ""],
-    "tooltip-format": "{time}"
+    "format": "<span font='MesloLGSNerdFontPropo'>{icon}</span> {capacity}%",
+    "format-charging": "<span font='MesloLGSNerdFontPropo'>\uf0e7</span> {capacity}%",
+	"interval": 1,
+    "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
+    "tooltip": true
   },
-  "network": {
-    "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
-    "format-ethernet": "<span size='13000' foreground='#f5e0dc'> </span>",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
-    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+  "wireplumber#sink": {
+    "node-type": "Audio/Sink",
+    "format": "<span font='MesloLGSNerdFontPropo'>{icon}</span> {volume}%",
+    "format-muted": "\ueee8",
+    "format-icons": {
+      "default": [
+        "\uf026",
+        "\uf027",
+        "\uf028"
+      ]
+    },
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
-  "pulseaudio": {
-      "format": "{icon}  {volume}%",
-      "format-muted": "",
-      "format-icons": {
-          "default": ["", "", " "]
-      },
-      "on-click": "pavucontrol"
-  }
+  "wireplumber#source": {
+      "node-type": "Audio/Source",
+      "format": "<span font='MesloLGSNerdFontPropo'>\uf130</span>",
+      "format-muted": "<span font='MesloLGSNerdFontPropo'>\uf131</span>",
+      "on-click": "pavucontrol",
+      "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+  },
+  "clock": {
+    "format": "{:%a %b %d  %I:%M%p}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "tray": {
+    "icon-size": 17,
+    "spacing": 6
+  },
+  "cpu": {
+      "format": "<span font='MesloLGSNerdFontPropo'>\uf4bc</span> {usage}%"
+  },
+  "memory": {
+      "format": "<span font='MesloLGSNerdFontPropo'>\uefc5</span> {percentage}%"
+  },
+  "custom/power": {
+	"format" : "⏻ ",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "~/.config/waybar/power_menu.xml",
+    "menu-actions": {
+        "lock": "hyprlock",
+        "shutdown": "shutdown now",
+        "reboot": "reboot",
+        "suspend": "systemctl suspend",
+        "hibernate": "systemctl hibernate"
+    }
+  },
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 18,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-out",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ],
+        "ignore-monitor": true,
+        "ignore": [
+            {
+                "type": "audio-in",
+                "name": "cava"
+            },
+            {
+                "type": "screenshare",
+                "name": "obs"
+            }
+        ]
+    },
+    "temperature": {
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": [
+            "\uf2cb",
+            "\uf2ca",
+            "\uf2c9",
+            "\uf2c8",
+            "\uf2c7"
+        ]
+    }
 }
