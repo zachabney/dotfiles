@@ -6,7 +6,8 @@
     "custom/power",
     "hyprland/workspaces",
     "tray",
-    "privacy"
+    "privacy",
+    "mpris"
   ],
   "modules-center": ["hyprland/window"],
   "modules-right": [
@@ -20,8 +21,30 @@
     "battery",
     "clock"
   ],
+  "mpris": {
+ 	"format": "<span font='MesloLGSNerdFontPropo'>{player_icon}</span> <span font='MesloLGSNerdFontPropo'>{status_icon}</span> {dynamic}",
+    "interval": 1,
+    "title-len": 40,
+    "artist-len": 40,
+    "player-icons": {
+        "spotify": "\uf1bc",
+        "default": "\uf001"
+    },
+	"status-icons": {
+		"playing": "\uf04b",
+		"paused": "\uf04c",
+		"stopped": "\uf04d"
+	},
+	"dynamic-order": ["title", "artist"],
+	"ignored-players": ["firefox"]
+  },
   "hyprland/workspaces": {
     "on-click": "activate"
+  },
+  "hyprland/window": {
+      "separate-outputs": true,
+      "icon": true,
+      "icon-size": 18
   },
   "network": {
     "format-wifi": "<span font='MesloLGSNerdFontPropo'>\uf1eb</span> {essid}",
