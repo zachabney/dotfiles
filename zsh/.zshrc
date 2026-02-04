@@ -32,4 +32,4 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
-if [ "$TMUX" = "" ]; then tmux; fi
+if [[ "$(tty)" != /dev/tty1 && "$TMUX" == "" ]]; then tmux; fi
