@@ -12,10 +12,12 @@ compinit
 # End of lines added by compinstall
 
 export EDITOR=nvim
+export MANPAGER="nvim +Man!"
 eval "$(starship init zsh)"
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.zsh
 
 alias c="clear"
 alias g="git"
@@ -32,4 +34,4 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
-if [[ "$(tty)" != /dev/tty1 && "$TMUX" == "" ]]; then tmux; fi
+# if [[ "$(tty)" != /dev/tty1 && "$TMUX" == "" ]]; then tmux; fi
