@@ -31,7 +31,7 @@
         "default": "\uf001"
     },
 	"status-icons": {
-		"playing": "\uf04b",
+		"playing": "",
 		"paused": "\uf04c",
 		"stopped": "\uf04d"
 	},
@@ -91,7 +91,14 @@
   },
   "clock": {
     "format": "{:%a %b %d  %I:%M%p}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "on-click": "date -u +\"%Y-%m-%dT%H:%M:%SZ\" | wl-copy",
+    "timezone-tooltip-format": "{:%a %b %d  %H:%M %Z}",
+    "timezones": [
+         "America/Chicago",
+         "UTC"
+    ],
+    "tooltip": true,
+    "tooltip-format": "{tz_list}"
   },
   "tray": {
     "icon-size": 17,
