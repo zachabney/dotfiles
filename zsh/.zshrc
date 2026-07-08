@@ -21,6 +21,7 @@ source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.zsh
 
 alias c="clear"
 alias g="git"
+alias lg="lazygit"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias l='ls -alh'
